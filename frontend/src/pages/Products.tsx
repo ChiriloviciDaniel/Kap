@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../services/productService";
 import type { Product } from "../types/product";
+import ProductCard from "../components/ui/ProductCard";
 
 function Products() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -27,12 +28,7 @@ function Products() {
       <h1>Products</h1>
 
       {products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <p>{product.price} lei</p>
-          <p>Stock: {product.stockQuantity}</p>
-        </div>
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );
